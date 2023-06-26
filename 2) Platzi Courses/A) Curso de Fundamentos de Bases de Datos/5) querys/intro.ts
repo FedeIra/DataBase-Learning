@@ -23,6 +23,12 @@ FROM posts;
 SELECT COUNT(*) AS numero_posts
 FROM posts;
 
+*AVG Calcula el promedio
+*COUNT Cuenta los registros de un campo
+*SUM Suma los valores de un campo
+*MAX Devuelve el maximo de un campo
+*MIN Devuelve el mínimo de un campo
+
 !JOIN
 Hay distintos tipos de join:
 
@@ -141,4 +147,79 @@ SELECT *
 FROM posts
 WHERE MONTH(publish_date) = "08";
 -- trae los posts que tengan fecha de publicación en agosto.
+
+!WHERE NULL / NOT NULL:
+*null: es por defecto cuando no se guarda una especificación en el campo. Se pueden consultar los valores de tipo nulo. El nulo no es mayor ni menor a nada por lo que no funciona ocmo número, cadena ni fecha.
+Hay que consultarlo con una sentencia particular:
+SELECT *
+FROM comments
+WHERE post_id IS NULL;
+
+*not null:
+SELECT *
+FROM comments
+WHERE post_id IS NOT NULL;
+
+* AND:
+Otro ejemplo de not null con filtro adicional:
+SELECT *
+FROM posts
+WHERE user_id IS NOT NULL
+AND status = "active";
+
+SELECT *
+FROM posts
+WHERE user_id IS NOT NULL
+AND status = "active"
+AND id_post < 5
+AND category_id = 2
+AND YEAR(publish_date) = "2023";
+
+!GROUP BY:
+Agregar una agrupación a la consulta. Indica criterios para agrupar los registros.
+
+Ejemplo:
+SELECT status, COUNT(*) post_quantity
+FROM posts
+GROUP BY status;
+En este caso agrupa por status (active o inactive) y cuenta los registros de cada status.
+
+SELECT YEAR(publish_date) AS post_year, COUNT(*) AS post_quantity
+FROM posts
+GROUP BY post_year;
+En este caso agrupa por año y cuenta los registros de cada año.
+
+SELECT MONTHNAME(publish_date) AS post_month, COUNT(*) AS post_quantity
+FROM posts
+GROUP BY post_month;
+En este caso agrupa por mes y cuenta los registros de cada mes.
+
+SELECT status, MONTHNAME(publish_date) AS post_month, COUNT(*) AS post_quantity
+FROM posts
+GROUP BY status, post_month;
+En este caso agrupa por status y mes y cuenta los registros de cada status y mes.
+Resultado:
+status	  post_month	post_quantity
+active	  August	    1
+inactive  August     1
+
+
+!ORDER BY:
+* Default:
+SELECT *
+FROM posts
+order by publish_date;
+-- por default lo ordena de manera ascendente
+
+*ASC:
+SELECT *
+FROM posts
+order by publish_date ASC;
+-- explicitamente de manera ascendente
+
+*DESC:
+SELECT *
+FROM posts
+order by publish_date desc;
+-- de manera descendiente
 */
