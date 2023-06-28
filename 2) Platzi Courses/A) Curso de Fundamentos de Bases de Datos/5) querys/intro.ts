@@ -1,6 +1,23 @@
 /*
-Example of querys:
+! De pregunta a query:
 
+Quiero obtener todos los post creados por edgar@com:
+
+*SELECT: Los datos que quieres mostrar: Nickname y Titulo del post
+*FROM: De dónde voy a tomar los datos: Tabla usuarios y post
+*WHERE: Los filtros de los datos que quieres mostrar: Deben de ser de edgar@com
+*GROUP BY: Los rubros por los que me interesa agrupar la información: No deseo agrupar
+*ORDER BY: El orden en que quiero presentar mi información: por fecha de publicación
+*HAVING: Los filtros que quiero que mis datos agrupados tengan
+
+SELECT u.nickname, p.titulo
+FROM usuarios
+where u.email="edgar@com"
+ORDER BY p.fecha_publicacion;
+
+cuantas tags tiene un blog post:
+SELECT COUNT(*) AS numero_tags FROM tags WHERE post_id=1;
+Queries:
 !SELECT
 * Select All:
 -- SELECT *
@@ -94,6 +111,8 @@ SELECT *
 FROM users
 RIGHT JOIN posts ON id_user = posts.user_id
 WHERE posts.user_id IS NULL;
+
+*ON: es que cada campo de cada tabla los une.
 
 !WHERE:
 Te permite filtrar duplas y registros dependiendo de ciertas cáracteristicas tipo criterios de fecha, cantidad, etc.
@@ -222,4 +241,83 @@ SELECT *
 FROM posts
 order by publish_date desc;
 -- de manera descendiente
+
+* ASC Y DESC también ordenan alfabeticamente, númericamente, por fecha, por cantidad:
+SELECT *
+FROM posts
+order by title desc;
+
+* LIMIT:
+Limita la cantidad de registros que devuelve la consulta. Ejemplo:
+SELECT *
+FROM posts
+order by title desc
+limit 2;
+-- trae los dos primeros registros ordenados alfabeticamente por título de manera descendiente.
+
+* HAVING:
+Permite filtrar registros de una consulta agrupada. Ejemplo:
+
+SELECT MONTHNAME(publish_date) AS post_month, status, count(*) AS post_quantity
+FROM posts
+group by status, post_month
+HAVING post_quantity > 2
+order by post_month;
+-- having sirve para una vez que agrupamos y tenemos campos dinamicos. Si lo intentas con where no podes. Having siempre va después de group by. Primero agrupa, después filtra y finalmente lo ordena.
+
+El having se puede usar con cualquier campo que se haya creado en la consulta. Se usa para filtrar por campos dinámicos. No se puede usar con campos estáticos. Para campos estáticos usamos where..
+
+Ejercicio:
+SELECT teachers.name as teacher,
+SUM (courses.n_reviews) AS total_reviews
+FROM courses
+INNER JOIN teachers ON courses.teacher_id = teachers.id
+GROUP BY teachers.name
+ORDER BY total_reviews DESC;
+
+Otro ejercicio:
+-- cuantos tags hay en cada post
+SELECT posts.title, COUNT(*) AS numero_tags
+FROM posts
+INNER JOIN posts_tags ON post_id = posts.id_post
+INNER JOIN tags ON id_tag = posts_tags.tag_id
+GROUP BY posts.id_post
+ORDER BY numero_tags DESC;
+
+* GROUP CONCAT:
+Toma resultado del query y en lugar de ponerlo en un row tras otro lo pone en un campo por comas.
+
+SELECT posts.title, group_concat(name_tag) AS nombre_de_tags
+FROM posts
+INNER JOIN posts_tags ON post_id = posts.id_post
+INNER JOIN tags ON id_tag = posts_tags.tag_id
+GROUP BY posts.id_post;
+
+SELECT *
+FROM tags
+LEFT JOIN posts_tags ON tag_id = tags.id_tag
+WHERE posts_tags.tag_id IS NULL;
+-- trae los tags que no están asociados a ningún post.
+
+SELECT c.name_category, COUNT(*) AS cantidad_de_posts
+FROM categories AS c
+INNER JOIN posts AS p ON c.idcategories = p.category_id
+GROUP BY c.idcategories
+ORDER BY cantidad_de_posts DESC
+LIMIT 1;
+-- trae la categoría con más posts.
+
+SELECT u.nickname, COUNT(*) AS cantidad_de_posts, group_concat(name_category)
+FROM users AS u
+INNER JOIN posts AS p ON u.id_user = p.user_id
+INNER JOIN categories AS c ON c.idcategories = p.category_id
+GROUP BY u.id_user
+ORDER BY cantidad_de_posts DESC;
+-- trae  usuario con  posts en orden descendiente y las categorías de esos posts.
+
+SELECT *
+FROM users AS u
+LEFT JOIN posts AS p ON p.user_id = u.id_user
+WHERE p.user_id IS NULL;
+-- trae los usuarios que no tienen posts.
 */
