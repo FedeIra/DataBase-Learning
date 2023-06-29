@@ -320,4 +320,12 @@ FROM users AS u
 LEFT JOIN posts AS p ON p.user_id = u.id_user
 WHERE p.user_id IS NULL;
 -- trae los usuarios que no tienen posts.
+
+
+SELECT cuerpo_comentario AS comentario, login AS usuario, titulo AS post
+FROM comentarios
+INNER JOIN usuarios ON comentarios.usuario_id = usuarios.id
+INNER JOIN posts ON comentarios.post_id = posts.id
+WHERE comentarios.usuario_id = 1;
+-- trae los comentarios de un usuario en particular.
 */
