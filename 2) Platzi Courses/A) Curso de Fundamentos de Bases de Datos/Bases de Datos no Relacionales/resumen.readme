@@ -1,0 +1,78 @@
+¿Qué son las bases de datos no relacionales? Ventajas de NoSQL
+
+bases de datos nosql mongodb caracteristicas ventajas nosql empresas que usan mongodb
+Hace alguno años, un nuevo concepto irrumpió en la escena del desarrollo de software, más precisamente en lo referente al almacenamiento de la información. Las bases de datos no relacionales, también llamadas NOSQL, surgieron como una respuesta a la necesidad de poder recuperar y escribir grandes volúmenes de información de una manera rápida.
+
+Al día de hoy, sin embargo, muchos desconocen de qué trata este nuevo mundo y qué ventajas (como también desventajas) presentan ante el viejo y querido SQL. Si este es tu caso, espero poder aclararte un poco el panorama con este sencillo resumen.
+
+¿Qué significa NOSQL?
+Empecemos por lo primero, ¿a qué llamamos bases de datos nosql ? En una primera interpretación, podemos llegar a pensar que nos referimos a una suerte de prohibición explícita de usar SQL, o a una tecnología que repudia enfáticamente el uso de lenguaje estructurado de consultas, sin embargo nada más lejos de la verdad.
+
+Lo cierto es que NOSQL significa Not Only SQL, es decir, No Solamente SQL, en una clara referencia a su intención de extender los límites de esta tecnología, creando una solución para los nuevos escenarios que se presentan.
+
+En pocas palabras, las bases de datos no-sql vienen a complementar y potenciar el tradicional modelo relacional de bases de datos.
+
+¿Qué son las bases de datos no relacionales?
+NoSQL es un término genérico para referirse a cualquier almacén de datos que no siga el modelo RDBMS tradicional, en especial por no usar el SQL como lenguaje para manipular datos.
+
+Las bases de datos no relacionales son un conjunto de soluciones enfocadas en resolver el problema de la disponibilidad y la estabilidad en detrimento de la consistencia y la atomicidad.
+
+NoSQL es en esencia una familia o ecosistema de tecnologías que aportan un enfoque nuevo al antiguo problema de la persistencia de los datos. Por este motivo, podemos encontrar distintos tipos de sistemas y modelos que con agrupados dentro del término No-Relacional.
+
+Tipos de bases de datos NOSQL: Características y ejemplos.
+A diferencia de las bbdd relacionales en donde existe un estándar único que los gestores y administradores respetan, en el universo nosql vamos a encontrarnos con muchos modelos diferentes que están optimizados para diferentes propósitos.
+
+1.- Clave-valor
+Este tipo de base de datos guardan la información y la acceden utilizando un hash map que vincula un conjunto de datos a una clave.
+
+Ventajas: Son rápidas para acceder a datos si conocemos su hash y excepcionales para manejar diccionarios.
+
+Desventajas: No son recomendables para querys complejas.
+
+
+Ejemplos: DynamoDB (AWS) y Cassandra (Facebook).
+
+2.- Basadas en documentos
+Son las más utilizadas fuera del estándar SQL. Son, básicamente, una implementación de las bases clave-valor pero con una estructura mas definida ya que almacenan los datos como objetos de tipo JSON.
+
+Ventajas: Son ideales para guardar el estado actual de una aplicación y restaurarlo con facilidad.
+
+Desventajas: No responden muy bien a búsquedas y ordenamientos.
+
+
+Ejemplos: MongoDB (MongoDB) y Firestore (Google)
+
+3.- Basadas en Grafos
+Las graph databases están basadas en nodos (entidades) que tienen múltiples relaciones y son ideales para almacenar datos que presentan interconexiones complejas.
+
+Son muy utilizadas en el mundo de la inteligencia artificial.
+
+Ventajas: Permiten almacenar relaciones complejas de una forma sencilla.
+
+Desventajas: La escalabilidad en este tipo de modelos supone un desafío matemático de gran complejidad.
+
+Ejemplos: Neo4j y Titan
+
+4.- En memoria
+Su estructura puede ser muy variada, pero tienen como factor diferencial su increíble velocidad de acceso. Dado que viven en la memoria principal del dispositivo que la corre, la lectura y escritura de datos es prácticamente inmediata.
+
+Ventajas: Su velocidad de escritura y lectura.
+
+
+Desventajas: Su desventaja mas evidente es su volatilidad y su limitación de espacio.
+
+Ejemplos: Memcached y Redis
+
+5.- Optimizadas para búsquedas
+Al igual que el caso anterior, su estructura puede ser variada, pero tienen como factor común el hecho de que están optimizadas para la realización de querys sumamente complejas de una forma mas simple.
+Son utilizadas para almacenar volúmenes de datos enormes a los que es necesario consultar frecuentemente para obtener información compleja y detallada.
+
+Son las favoritas para Bussines Inteligence y también tienen gran presencia en el mundo del Machine Learning.
+
+Ventajas: Permiten realizar consultas complejas con bastante facilidad.
+
+Desventajas: Son sistemas altamente especializados para entornos que van a manejar enormes volúmenes de datos, por lo que su uso se desaconseja para proyectos pequeños en donde podríamos incurrir en una sobre-ingeniería.
+
+Ejemplos: BigQuery (Google) y Elasticsearch
+
+Como vemos, existe una gran variedad de tecnologías dentro de las llamadas bases de datos no relaciones. Cuál usar dependerá de las necesidades propias de cada proyecto y del alcance del mismo.
