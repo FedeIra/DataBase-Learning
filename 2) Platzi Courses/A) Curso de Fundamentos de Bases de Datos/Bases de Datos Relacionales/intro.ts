@@ -58,4 +58,35 @@ c) Aplicaremos las reglas de Normalización
 ----3FN: Cumple con la 1FN y 2FN y los campos que NO son clave, NO deben tener dependencias. Se debe seguir analizando la estructura de las tablas, para evitar que no haya registros con campos no dependientes.
 
 ----4FN: Cumple 1FN, 2FN, 3FN y los campos multivaluados se identifican por una clave única.
+
+
+*Bases de datos en la vida real:
+Hoy en dia, se utilizan diversos tipos de bases de datos segun el problema que se quiera resolver:
+Las bases de datos relacionales, durante mucho tiempo, fueron utilizadas para resolver todo tipo de situaciones, pero al aumentar enormemente el numero de datos a manejar, se volveron ineficientes en muchos casos.
+Firestore o MongoDB nos permiten obtener los datos actuales de la aplicacion de manera simple. Sin embargo, no nos permite hacer, por ejemplo, queries muy complejos.
+En una misma disciplina, es probable que haya que utilizar mas de un tipo de bases de datos.
+
+*Big dada:
+la definición ahora muy popular del big data como las tres Vs:
+
+Volumen. Las organizaciones recopilan datos de diversas fuentes, incluyendo transacciones comerciales, medios sociales e información de sensores o que se transmite de una máquina a otra. En el pasado, almacenarlos habría sido un problema – pero nuevas tecnologías (como Hadoop) han aligerado la tarea.
+
+Velocidad. Los datos se transmiten a una velocidad sin precedentes y se deben distribuir de manera oportuna. Etiquetas FID, sensores y la medición inteligente crean la necesidad de distribuir torrentes de datos casi en tiempo real.
+
+Variedad. Los datos vienen en toda clase de formatos – desde datos numéricos estructurados en bases de datos tradicionales hasta documentos de texto no estructurados, correo electrónico, video, audio, datos de teletipo bursátil y transacciones financieras.
+
+Los datos de la actualidad provienen de múltiples fuentes, lo que hace difícil vincular, empatar, depurar y transformar datos entre diferentes sistemas. Sin embargo, es necesario conectar y correlacionar relaciones, jerarquías y múltiples vínculos de datos o sus datos se pueden salir de control en un segundo.
+
+*Data warehouse:
+En primer lugar, DW no es un producto que pueda ser comprado en el mercado, sino más bien un concepto que debe ser construido. DW es una combinación de conceptos y tecnología que cambian significativamente la manera en que es entregada la información a la gente de negocios. El objetivo principal es satisfacer los requerimientos de información internos de la empresa para una mejor gestión, con eficiencia y facilidad de acceso.
+
+El DW puede verse como una bodega donde están almacenados todos los datos necesarios para realizar las funciones de gestión de la empresa, de manera que puedan utilizarse fácilmente según se necesiten.
+
+Trata de guardar cantidades masivas de datos. No es lo mismo que big data, sino que mucho más. Entran muchos cada segundo. No queda en la base de datos principal. Cuando no son recurrentes se guarda el dato en data wahrehouse. Es como archivos muertos, pero que queremos no perder y tenerlos ordenados.
+
+Pueden almacenar muchísimos datos.
+
+Por ejemplo, google utiliza big table que tiene como particularidad una gran tabla. No sirve tanto para hacer consultas.
+
+La información ingresada al Data Warehouse debe pasar por el proceso ETL (Extract, Transform and Load). Este proceso que se explica con más detalle en otro artículo. Como se comenta más arriba la información ingresada al Data Warehouse debe ser integrada y limpia, objetivo que se logra a través del proceso ETL.
 */
